@@ -43,13 +43,6 @@
             min-height: 100vh;
         }
 
-        /* ─── ACCESSIBILITA' ─── */
-        a:focus-visible, button:focus-visible {
-            outline: 3px solid var(--amber);
-            outline-offset: 2px;
-            border-radius: 4px;
-        }
-
         /* ─── HEADER ─── */
         .site-header {
             background: linear-gradient(135deg, var(--green-900) 0%, var(--green-800) 55%, var(--green-700) 100%);
@@ -133,6 +126,23 @@
             transition: background 0.2s, transform 0.2s;
         }
         .btn-white:hover { background: var(--green-100); transform: translateY(-2px); }
+
+        .btn-outline-white {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 10px 22px;
+            background: rgba(255,255,255,0.12);
+            color: #fff;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 600;
+            font-size: 0.87rem;
+            border: 1px solid rgba(255,255,255,0.35);
+            border-radius: 6px;
+            text-decoration: none;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .btn-outline-white:hover { background: rgba(255,255,255,0.22); transform: translateY(-2px); }
 
         /* ─── INTRO STRIP ─── */
         .intro-strip {
@@ -262,7 +272,7 @@
             flex-shrink: 0;
         }
 
-        /* ─── GRID E TABELLE ─── */
+        /* ─── GRID ─── */
         .grid-2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -270,20 +280,6 @@
             margin-bottom: 20px;
         }
         @media (max-width: 640px) { .grid-2 { grid-template-columns: 1fr; } }
-
-        .table-container { overflow-x: auto; }
-        .mim-table { width: 100%; border-collapse: collapse; font-size: 0.87rem; }
-        .mim-table th { text-align: left; padding: 10px 14px; color: var(--green-900); font-weight: 700; border-bottom: 2px solid var(--green-500); background: var(--green-100); }
-        .mim-table td { padding: 10px 14px; vertical-align: top; border-bottom: 1px solid var(--grey-100); }
-        .mim-table tr:last-child td { border-bottom: none; }
-        .mim-table .td-req { color: var(--text-dark); }
-        .mim-table .td-app { color: var(--text-muted); }
-        .mim-table .td-link { text-align: center; }
-        
-        .btn-tab-link {
-            background: var(--green-100); border: 1px solid var(--border); border-radius: 4px; padding: 3px 8px; font-size: 0.75rem; color: var(--green-800); cursor: pointer; transition: background 0.2s;
-        }
-        .btn-tab-link:hover { background: var(--green-200, #c8e6c9); }
 
         /* ─── RULE LISTS ─── */
         .rule-list { list-style: none; padding: 0; }
@@ -309,19 +305,34 @@
         .rule-list li strong { color: var(--green-800); }
 
         /* ─── CALLOUT BOXES ─── */
-        .box-green, .box-amber, .box-red {
+        .box-green {
+            background: var(--green-100);
+            border-left: 4px solid var(--green-500);
             border-radius: 0 8px 8px 0;
             padding: 16px 20px;
             margin: 18px 0;
             font-size: 0.91rem;
         }
-        .box-green { background: var(--green-100); border-left: 4px solid var(--green-500); }
         .box-green .box-title { color: var(--green-800); font-weight: 600; margin-bottom: 8px; }
-        
-        .box-amber { background: var(--amber-bg); border-left: 4px solid var(--amber); }
+
+        .box-amber {
+            background: var(--amber-bg);
+            border-left: 4px solid var(--amber);
+            border-radius: 0 8px 8px 0;
+            padding: 16px 20px;
+            margin: 18px 0;
+            font-size: 0.91rem;
+        }
         .box-amber .box-title { color: #e65100; font-weight: 600; margin-bottom: 8px; }
-        
-        .box-red { background: var(--red-bg); border-left: 4px solid var(--red); }
+
+        .box-red {
+            background: var(--red-bg);
+            border-left: 4px solid var(--red);
+            border-radius: 0 8px 8px 0;
+            padding: 16px 20px;
+            margin: 18px 0;
+            font-size: 0.91rem;
+        }
         .box-red .box-title { color: var(--red); font-weight: 600; margin-bottom: 8px; }
 
         /* ─── DO / DON'T ─── */
@@ -333,8 +344,18 @@
         }
         @media (max-width: 540px) { .do-dont { grid-template-columns: 1fr; } }
 
-        .do-col { background: var(--green-100); border: 1px solid #a5d6a7; border-radius: 10px; padding: 18px 20px; }
-        .dont-col { background: var(--red-bg); border: 1px solid #ef9a9a; border-radius: 10px; padding: 18px 20px; }
+        .do-col {
+            background: var(--green-100);
+            border: 1px solid #a5d6a7;
+            border-radius: 10px;
+            padding: 18px 20px;
+        }
+        .dont-col {
+            background: var(--red-bg);
+            border: 1px solid #ef9a9a;
+            border-radius: 10px;
+            padding: 18px 20px;
+        }
         .do-col h4 { color: var(--green-800); margin-bottom: 12px; font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700; }
         .dont-col h4 { color: var(--red); margin-bottom: 12px; font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700; }
         .do-col ul, .dont-col ul { list-style: none; padding: 0; }
@@ -423,8 +444,7 @@
         .acc-item.open .acc-trigger { color: var(--green-800); background: var(--green-50); font-weight: 600; }
         .acc-item.open .chevron { transform: rotate(180deg); color: var(--green-700); }
         .chevron { transition: transform 0.3s; flex-shrink: 0; color: var(--text-light); }
-        .acc-body { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; visibility: hidden; }
-        .acc-item.open .acc-body { visibility: visible; }
+        .acc-body { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
         .acc-body-inner {
             padding: 0 20px 18px;
             font-size: 0.89rem;
@@ -478,7 +498,6 @@
             cursor: pointer;
             transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
         }
-        .hero-pill:focus-visible { outline: 3px solid var(--green-500); }
         .hero-pill:hover { border-color: var(--green-500); box-shadow: var(--shadow-lg); transform: translateY(-4px); }
         .hp-icon {
             width: 48px; height: 48px;
@@ -503,69 +522,9 @@
         .site-footer a { color: var(--green-400); text-decoration: none; }
         .site-footer a:hover { color: var(--green-300, #81c784); text-decoration: underline; }
 
-        /* ─── BACK TO TOP BUTTON ─── */
-        .back-to-top {
-            position: fixed;
-            bottom: 24px;
-            right: 24px;
-            background: var(--green-800);
-            color: white;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(20px);
-            transition: all 0.3s ease;
-            z-index: 999;
-        }
-        .back-to-top.visible {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-        .back-to-top:hover { background: var(--green-900); transform: translateY(-3px); }
-
-        /* ─── SCROLLBAR ─── */
         ::-webkit-scrollbar { width: 6px; height: 6px; }
         ::-webkit-scrollbar-track { background: var(--grey-100); }
         ::-webkit-scrollbar-thumb { background: var(--green-400); border-radius: 3px; }
-
-        /* ─── PRINT STYLES ─── */
-        @media print {
-            body { background: white !important; color: black !important; font-size: 12pt; }
-            .tabs-wrapper, .intro-strip, .overview-hero, .back-to-top { display: none !important; }
-            .site-header { background: white !important; color: black !important; padding: 20px 0 !important; border-bottom: 2px solid black; }
-            .site-header::before, .site-header::after { display: none !important; }
-            .site-header h1 { color: black !important; }
-            .site-header h1 em { color: #333 !important; }
-            .header-sub, .header-badge { color: black !important; border-color: black !important; }
-            .btn-white { display: none !important; }
-            .main { padding: 0 !important; margin: 0 !important; max-width: 100% !important; }
-            
-            /* Mostra tutte le sezioni di seguito */
-            .section { display: block !important; page-break-after: always; opacity: 1 !important; transform: none !important; margin-top: 30px;}
-            
-            .card { box-shadow: none !important; border: 1px solid #ccc !important; page-break-inside: avoid; }
-            .do-dont { display: block !important; }
-            .do-col, .dont-col { border: 1px solid #ccc !important; background: white !important; margin-bottom: 10px; }
-            
-            /* Espandi tutti gli accordion in stampa */
-            .acc-body { max-height: none !important; visibility: visible !important; }
-            .acc-item { border: 1px solid #ccc !important; }
-            .chevron { display: none !important; }
-
-            /* Rendi i link visibili e stampabili */
-            a { color: black !important; text-decoration: underline !important; }
-            a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 0.85em; color: #555; word-wrap: break-word; }
-            .site-footer { background: white !important; color: black !important; border-top: 1px solid black; }
-        }
     </style>
 </head>
 <body>
@@ -577,10 +536,15 @@
         <h1>Intelligenza Artificiale<br><em>a Scuola</em></h1>
         <p class="header-sub">Linee guida operative per l'uso responsabile, etico e didatticamente efficace dell'IA — per docenti, studenti e famiglie.</p>
         <div class="header-links">
-            <a class="btn-white" href="https://mim.gov.it/documents/20182/0/MIM_Linee+guida+IA+nella+Scuola_09_08_2025-signed.pdf/b70fdc45-4b75-1f7e-73bf-eab12989b928?t=1756468797694" target="_blank" rel="noopener noreferrer">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            <a class="btn-white" href="https://mim.gov.it/documents/20182/0/MIM_Linee+guida+IA+nella+Scuola_09_08_2025-signed.pdf/b70fdc45-4b75-1f7e-73bf-eab12989b928?t=1756468797694" target="_blank">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
                 Linee Guida MIM (PDF)
             </a>
+            <a class="btn-white" href="https://iismendel.github.io/Linee-guida-Intelligenza-Artificiale_IIS-MENDEL/" target="_blank">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                Linee Guida AI e Esempi Buone Pratiche_IIS MENDEL
+            </a>
+
         </div>
     </div>
 </header>
@@ -591,34 +555,34 @@
 </div>
 
 <!-- ═══ STICKY TABS ═══ -->
-<div class="tabs-wrapper" role="tablist" aria-label="Sezioni Linee Guida">
+<div class="tabs-wrapper">
     <div class="tabs">
-        <button class="tab-btn active" data-tab="panoramica" role="tab" aria-selected="true" aria-controls="tab-panoramica">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        <button class="tab-btn active" data-tab="panoramica">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
             Panoramica
         </button>
-        <button class="tab-btn" data-tab="docenti" role="tab" aria-selected="false" aria-controls="tab-docenti">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        <button class="tab-btn" data-tab="docenti">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
             Per i Docenti
         </button>
-        <button class="tab-btn" data-tab="studenti" role="tab" aria-selected="false" aria-controls="tab-studenti">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        <button class="tab-btn" data-tab="studenti">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
             Per gli Studenti
         </button>
-        <button class="tab-btn" data-tab="agri" role="tab" aria-selected="false" aria-controls="tab-agri">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/></svg>
+        <button class="tab-btn" data-tab="agri">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/></svg>
             IA &amp; Agrario
         </button>
-        <button class="tab-btn" data-tab="famiglie" role="tab" aria-selected="false" aria-controls="tab-famiglie">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+        <button class="tab-btn" data-tab="famiglie">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
             Famiglie
         </button>
-        <button class="tab-btn" data-tab="privacy" role="tab" aria-selected="false" aria-controls="tab-privacy">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <button class="tab-btn" data-tab="privacy">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
             Privacy &amp; Integrità
         </button>
-        <button class="tab-btn" data-tab="bibliografia" role="tab" aria-selected="false" aria-controls="tab-bibliografia">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+        <button class="tab-btn" data-tab="bibliografia">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
             Bibliografia
         </button>
     </div>
@@ -628,98 +592,98 @@
 <main class="main">
 
     <!-- ── PANORAMICA ── -->
-    <section id="tab-panoramica" class="section active" role="tabpanel">
+    <section id="tab-panoramica" class="section active">
         <h2 class="section-title">Perché queste linee guida?</h2>
         <span class="green-line"></span>
         <p class="section-lead">L'IA generativa è già presente nella vita degli studenti e dei docenti. Questa guida non vuole vietarne l'uso, ma orientarlo in modo critico, consapevole ed etico.</p>
 
         <div class="overview-hero">
-            <button class="hero-pill" onclick="switchTab('docenti')" aria-label="Vai alla sezione Docenti">
+            <div class="hero-pill" onclick="switchTab('docenti')">
                 <div class="hp-icon">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
                 </div>
                 <div class="hp-label">Docenti</div>
                 <div class="hp-desc">Integrare l'IA nella didattica in modo responsabile</div>
-            </button>
-            <button class="hero-pill" onclick="switchTab('studenti')" aria-label="Vai alla sezione Studenti">
+            </div>
+            <div class="hero-pill" onclick="switchTab('studenti')">
                 <div class="hp-icon">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
                 </div>
                 <div class="hp-label">Studenti</div>
                 <div class="hp-desc">Regole e consigli per non perdere le tue capacità</div>
-            </button>
-            <button class="hero-pill" onclick="switchTab('agri')" aria-label="Vai alla sezione Agrario">
+            </div>
+            <div class="hero-pill" onclick="switchTab('agri')">
                 <div class="hp-icon hp-icon-blue">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1565c0" stroke-width="2" aria-hidden="true"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/></svg>
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1565c0" stroke-width="2"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/></svg>
                 </div>
                 <div class="hp-label">Agrario &amp; IA</div>
                 <div class="hp-desc">Applicazioni specifiche per il nostro indirizzo</div>
-            </button>
+            </div>
         </div>
 
         <div class="card">
             <div class="card-title">
                 <div class="card-icon">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5" aria-hidden="true"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
                 </div>
                 Conformità alle Linee Guida MIM — DM n. 166 del 9 agosto 2025
             </div>
-            <p style="font-size:0.88rem;color:var(--text-muted);margin-bottom:18px;">La tabella seguente mostra come ogni requisito delle Linee Guida ministeriali trova riscontro nelle regole operative adottate dall'IIS Mendel. Il testo integrale è disponibile sul <a href="https://mim.gov.it/documents/20182/0/MIM_Linee+guida+IA+nella+Scuola_09_08_2025-signed.pdf/b70fdc45-4b75-1f7e-73bf-eab12989b928?t=1756468797694" target="_blank" rel="noopener" style="color:var(--green-700);font-weight:600;">sito ufficiale MIM</a>.</p>
+            <p style="font-size:0.88rem;color:var(--text-muted);margin-bottom:18px;">La tabella seguente mostra come ogni requisito delle Linee Guida ministeriali trova riscontro nelle regole operative adottate dall'IIS Mendel. Il testo integrale è disponibile sul <a href="https://mim.gov.it/documents/20182/0/MIM_Linee+guida+IA+nella+Scuola_09_08_2025-signed.pdf/b70fdc45-4b75-1f7e-73bf-eab12989b928?t=1756468797694" target="_blank" style="color:var(--green-700);font-weight:600;">sito ufficiale MIM</a>.</p>
 
-            <div class="table-container">
-            <table class="mim-table">
+            <div style="overflow-x:auto;">
+            <table style="width:100%;border-collapse:collapse;font-size:0.87rem;">
                 <thead>
-                    <tr>
-                        <th style="width:42%;">Requisito MIM (DM 166/2025)</th>
-                        <th>Come lo applichiamo al Mendel</th>
-                        <th style="width:70px; text-align:center;">Dove</th>
+                    <tr style="background:var(--green-100);">
+                        <th style="text-align:left;padding:10px 14px;color:var(--green-900);font-weight:700;border-bottom:2px solid var(--green-500);width:42%;">Requisito MIM (DM 166/2025)</th>
+                        <th style="text-align:left;padding:10px 14px;color:var(--green-900);font-weight:700;border-bottom:2px solid var(--green-500);">Come lo applichiamo al Mendel</th>
+                        <th style="text-align:center;padding:10px 14px;color:var(--green-900);font-weight:700;border-bottom:2px solid var(--green-500);width:60px;">Dove</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td class="td-req">Approccio antropocentrico: l'IA supporta ma non sostituisce il docente</td>
-                        <td class="td-app">Principio 01 · Divieto di automazione della valutazione · Human-in-the-loop</td>
-                        <td class="td-link"><button class="btn-tab-link" onclick="switchTab('panoramica')">Panor.</button></td>
+                    <tr style="border-bottom:1px solid var(--grey-100);">
+                        <td style="padding:10px 14px;vertical-align:top;color:var(--text-dark);">Approccio antropocentrico: l'IA supporta ma non sostituisce il docente</td>
+                        <td style="padding:10px 14px;vertical-align:top;color:var(--text-muted);">Principio 01 · Divieto di automazione della valutazione · Human-in-the-loop</td>
+                        <td style="padding:10px 14px;text-align:center;vertical-align:top;"><button onclick="switchTab('panoramica')" style="background:var(--green-100);border:1px solid var(--border);border-radius:4px;padding:3px 8px;font-size:0.75rem;color:var(--green-800);cursor:pointer;">Panor.</button></td>
+                    </tr>
+                    <tr style="border-bottom:1px solid var(--grey-100);">
+                        <td style="padding:10px 14px;vertical-align:top;color:var(--text-dark);">Trasparenza e spiegabilità (Explainable AI): i processi algoritmici devono essere comprensibili</td>
+                        <td style="padding:10px 14px;vertical-align:top;color:var(--text-muted);">Principio 02 Trasparenza · Obbligo di dichiarazione dell'uso IA negli elaborati · Divieto di sistemi "black box" per la valutazione</td>
+                        <td style="padding:10px 14px;text-align:center;vertical-align:top;"><button onclick="switchTab('docenti')" style="background:var(--green-100);border:1px solid var(--border);border-radius:4px;padding:3px 8px;font-size:0.75rem;color:var(--green-800);cursor:pointer;">Docenti</button></td>
+                    </tr>
+                    <tr style="border-bottom:1px solid var(--grey-100);">
+                        <td style="padding:10px 14px;vertical-align:top;color:var(--text-dark);">DPIA (Valutazione d'Impatto) prima di adottare nuovi strumenti IA</td>
+                        <td style="padding:10px 14px;vertical-align:top;color:var(--text-muted);">La scuola conduce la DPIA con il supporto del DPO prima di ogni nuova adozione · Registro dei sistemi IA in uso</td>
+                        <td style="padding:10px 14px;text-align:center;vertical-align:top;"><button onclick="switchTab('privacy')" style="background:var(--green-100);border:1px solid var(--border);border-radius:4px;padding:3px 8px;font-size:0.75rem;color:var(--green-800);cursor:pointer;">Privacy</button></td>
+                    </tr>
+                    <tr style="border-bottom:1px solid var(--grey-100);">
+                        <td style="padding:10px 14px;vertical-align:top;color:var(--text-dark);">Protezione dati studenti minorenni: divieto di inserire dati personali nei sistemi IA</td>
+                        <td style="padding:10px 14px;vertical-align:top;color:var(--text-muted);">Vietato inserire dati identificativi (nome, classe, diagnosi BES/DSA) nei prompt IA · Consenso informato per piattaforme che profilano dati</td>
+                        <td style="padding:10px 14px;text-align:center;vertical-align:top;"><button onclick="switchTab('privacy')" style="background:var(--green-100);border:1px solid var(--border);border-radius:4px;padding:3px 8px;font-size:0.75rem;color:var(--green-800);cursor:pointer;">Privacy</button></td>
+                    </tr>
+                    <tr style="border-bottom:1px solid var(--grey-100);">
+                        <td style="padding:10px 14px;vertical-align:top;color:var(--text-dark);">Integrità accademica: l'uso non dichiarato dell'IA equivale a plagio</td>
+                        <td style="padding:10px 14px;vertical-align:top;color:var(--text-muted);">Obbligo di citazione esplicita · Formula standard adottata · Sanzioni previste dal Regolamento d'Istituto</td>
+                        <td style="padding:10px 14px;text-align:center;vertical-align:top;"><button onclick="switchTab('studenti')" style="background:var(--green-100);border:1px solid var(--border);border-radius:4px;padding:3px 8px;font-size:0.75rem;color:var(--green-800);cursor:pointer;">Studenti</button></td>
+                    </tr>
+                    <tr style="border-bottom:1px solid var(--grey-100);">
+                        <td style="padding:10px 14px;vertical-align:top;color:var(--text-dark);">IA per l'inclusione (BES/DSA): uso compensativo, non sostitutivo dello sforzo cognitivo</td>
+                        <td style="padding:10px 14px;vertical-align:top;color:var(--text-muted);">Uso IA per BES/DSA esplicitamente previsto e regolamentato nel PDP/PEI · Supervisione docente di sostegno</td>
+                        <td style="padding:10px 14px;text-align:center;vertical-align:top;"><button onclick="switchTab('docenti')" style="background:var(--green-100);border:1px solid var(--border);border-radius:4px;padding:3px 8px;font-size:0.75rem;color:var(--green-800);cursor:pointer;">Docenti</button></td>
+                    </tr>
+                    <tr style="border-bottom:1px solid var(--grey-100);">
+                        <td style="padding:10px 14px;vertical-align:top;color:var(--text-dark);">Formazione continua del personale (DigCompEdu, DigComp 3.0)</td>
+                        <td style="padding:10px 14px;vertical-align:top;color:var(--text-muted);">Piano PNRR D.M. 66/2023 attivo · Gruppo di almeno 15 docenti come leadership digitale · Comunità di Pratiche</td>
+                        <td style="padding:10px 14px;text-align:center;vertical-align:top;"><button onclick="switchTab('docenti')" style="background:var(--green-100);border:1px solid var(--border);border-radius:4px;padding:3px 8px;font-size:0.75rem;color:var(--green-800);cursor:pointer;">Docenti</button></td>
+                    </tr>
+                    <tr style="border-bottom:1px solid var(--grey-100);">
+                        <td style="padding:10px 14px;vertical-align:top;color:var(--text-dark);">Coinvolgimento delle famiglie: informativa e consenso per l'uso di piattaforme IA</td>
+                        <td style="padding:10px 14px;vertical-align:top;color:var(--text-muted);">Patto di Corresponsabilità Educativa aggiornato con sezione dedicata all'IA · Comunicazioni tramite registro elettronico</td>
+                        <td style="padding:10px 14px;text-align:center;vertical-align:top;"><button onclick="switchTab('famiglie')" style="background:var(--green-100);border:1px solid var(--border);border-radius:4px;padding:3px 8px;font-size:0.75rem;color:var(--green-800);cursor:pointer;">Famiglie</button></td>
                     </tr>
                     <tr>
-                        <td class="td-req">Trasparenza e spiegabilità (Explainable AI): i processi algoritmici devono essere comprensibili</td>
-                        <td class="td-app">Principio 02 Trasparenza · Obbligo di dichiarazione dell'uso IA negli elaborati · Divieto di sistemi "black box" per la valutazione</td>
-                        <td class="td-link"><button class="btn-tab-link" onclick="switchTab('docenti')">Docenti</button></td>
-                    </tr>
-                    <tr>
-                        <td class="td-req">DPIA (Valutazione d'Impatto) prima di adottare nuovi strumenti IA</td>
-                        <td class="td-app">La scuola conduce la DPIA con il supporto del DPO prima di ogni nuova adozione · Registro dei sistemi IA in uso</td>
-                        <td class="td-link"><button class="btn-tab-link" onclick="switchTab('privacy')">Privacy</button></td>
-                    </tr>
-                    <tr>
-                        <td class="td-req">Protezione dati studenti minorenni: divieto di inserire dati personali nei sistemi IA</td>
-                        <td class="td-app">Vietato inserire dati identificativi (nome, classe, diagnosi BES/DSA) nei prompt IA · Consenso informato per piattaforme che profilano dati</td>
-                        <td class="td-link"><button class="btn-tab-link" onclick="switchTab('privacy')">Privacy</button></td>
-                    </tr>
-                    <tr>
-                        <td class="td-req">Integrità accademica: l'uso non dichiarato dell'IA equivale a plagio</td>
-                        <td class="td-app">Obbligo di citazione esplicita · Formula standard adottata · Sanzioni previste dal Regolamento d'Istituto</td>
-                        <td class="td-link"><button class="btn-tab-link" onclick="switchTab('studenti')">Studenti</button></td>
-                    </tr>
-                    <tr>
-                        <td class="td-req">IA per l'inclusione (BES/DSA): uso compensativo, non sostitutivo dello sforzo cognitivo</td>
-                        <td class="td-app">Uso IA per BES/DSA esplicitamente previsto e regolamentato nel PDP/PEI · Supervisione docente di sostegno</td>
-                        <td class="td-link"><button class="btn-tab-link" onclick="switchTab('docenti')">Docenti</button></td>
-                    </tr>
-                    <tr>
-                        <td class="td-req">Formazione continua del personale (DigCompEdu, DigComp 3.0)</td>
-                        <td class="td-app">Piano PNRR D.M. 66/2023 attivo · Gruppo di almeno 15 docenti come leadership digitale · Comunità di Pratiche</td>
-                        <td class="td-link"><button class="btn-tab-link" onclick="switchTab('docenti')">Docenti</button></td>
-                    </tr>
-                    <tr>
-                        <td class="td-req">Coinvolgimento delle famiglie: informativa e consenso per l'uso di piattaforme IA</td>
-                        <td class="td-app">Patto di Corresponsabilità Educativa aggiornato con sezione dedicata all'IA · Comunicazioni tramite registro elettronico</td>
-                        <td class="td-link"><button class="btn-tab-link" onclick="switchTab('famiglie')">Famiglie</button></td>
-                    </tr>
-                    <tr>
-                        <td class="td-req">Integrazione nel PTOF e nel Regolamento d'Istituto</td>
-                        <td class="td-app">Queste linee guida costituiscono il documento operativo di riferimento adottato dall'IIS Mendel in coerenza con il PTOF 2025/28</td>
-                        <td class="td-link"><span style="font-size:0.75rem;color:var(--green-700);font-weight:600;">Tutto</span></td>
+                        <td style="padding:10px 14px;vertical-align:top;color:var(--text-dark);">Integrazione nel PTOF e nel Regolamento d'Istituto</td>
+                        <td style="padding:10px 14px;vertical-align:top;color:var(--text-muted);">Queste linee guida costituiscono il documento operativo di riferimento adottato dall'IIS Mendel in coerenza con il PTOF 2025/28</td>
+                        <td style="padding:10px 14px;text-align:center;vertical-align:top;"><span style="font-size:0.75rem;color:var(--green-700);font-weight:600;">Tutto</span></td>
                     </tr>
                 </tbody>
             </table>
@@ -729,7 +693,7 @@
         <div class="card">
             <div class="card-title">
                 <div class="card-icon">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                 </div>
                 I 6 principi fondamentali
             </div>
@@ -768,7 +732,7 @@
 
         <div class="card">
             <div class="card-title">
-                <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+                <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
                 Lo spirito pionieristico del Mendel
             </div>
             <p style="font-size:0.91rem;color:var(--text-muted);line-height:1.75;">Francesco Ferrazzi, a cavallo del 1900, introdusse nei suoi fondi la corrente elettrica, i primi concimi chimici e i macchinari più avanzati dell'epoca. Nel 1935 la famiglia Ferrazzi e Cova lasciò il proprio patrimonio per fondare una scuola teorico-pratica di agricoltura. Nel 1990 l'istituto fu intitolato a <strong style="color:var(--green-800);">Gregorio Mendel</strong>, padre della genetica moderna. Quello stesso spirito — innovare per servire la terra — oggi ci chiede di abbracciare l'Agricoltura 4.0 e l'intelligenza artificiale con lo stesso coraggio e la stessa responsabilità.</p>
@@ -785,14 +749,14 @@
     </section>
 
     <!-- ── DOCENTI ── -->
-    <section id="tab-docenti" class="section" role="tabpanel">
+    <section id="tab-docenti" class="section">
         <h2 class="section-title">Guida per i Docenti</h2>
         <span class="green-line"></span>
         <p class="section-lead">L'IA può diventare un potente strumento didattico se usata con consapevolezza e trasparenza nei confronti degli studenti e delle famiglie.</p>
 
         <div class="card">
             <div class="card-title">
-                <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
+                <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
                 Usi didattici consigliati
             </div>
             <div class="grid-2">
@@ -813,7 +777,7 @@
 
         <div class="card">
             <div class="card-title">
-                <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5" aria-hidden="true"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+                <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
                 Strumenti consigliati per la didattica
             </div>
             <p style="font-size:0.87rem;color:var(--text-muted);margin-bottom:12px;">Verificare sempre i termini d'uso per i minori prima di assegnare attività domestiche.</p>
@@ -836,7 +800,7 @@
 
         <div class="card">
             <div class="card-title">
-                <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+                <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
                 Formazione docenti sull'IA — Piano PNRR (D.M. 66/2023)
             </div>
             <p style="font-size:0.9rem;color:var(--text-muted);margin-bottom:14px;">Il Mendel è impegnato nel piano di formazione per la transizione digitale previsto dal D.M. 66/2023, con attenzione specifica all'intelligenza artificiale come ambito prioritario.</p>
@@ -854,7 +818,7 @@
 
         <div class="card">
             <div class="card-title">
-                <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="23" y1="21" x2="23" y2="19"/><line x1="19" y1="21" x2="19" y2="14"/></svg></div>
+                <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="23" y1="21" x2="23" y2="19"/><line x1="19" y1="21" x2="19" y2="14"/></svg></div>
                 IA, BES/DSA e piani personalizzati (PDP/PEI)
             </div>
             <p style="font-size:0.9rem;color:var(--text-muted);margin-bottom:14px;">L'IA ha un potenziale inclusivo straordinario, ma non è <em>automaticamente</em> inclusiva. La sua efficacia dipende dalla progettazione pedagogica a monte.</p>
@@ -876,7 +840,7 @@
 
         <div class="card">
             <div class="card-title">
-                <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
                 Obblighi e responsabilità del docente
             </div>
             <div class="do-dont">
@@ -906,41 +870,41 @@
 
         <div class="card">
             <div class="card-title">
-                <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+                <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
                 Come gestire l'uso dell'IA nelle verifiche
             </div>
             <p style="font-size:0.9rem;color:var(--text-muted);margin-bottom:14px;">Non esiste un rilevatore di testo IA completamente affidabile. La strategia più efficace è <strong>progettare compiti autentici</strong>.</p>
             <div class="accordion">
                 <div class="acc-item">
-                    <button class="acc-trigger" aria-expanded="false" aria-controls="panel-doc-1">Compiti che l'IA non può fare al posto dello studente
-                        <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                    <button class="acc-trigger">Compiti che l'IA non può fare al posto dello studente
+                        <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
                     </button>
-                    <div id="panel-doc-1" class="acc-body"><div class="acc-body-inner">Prove orali, relazioni su esperienze di laboratorio con dati reali, analisi di campioni raccolti sul campo, osservazioni in azienda agricola, riflessioni su attività di alternanza. L'IA non conosce il tuo contesto specifico: radica le attività nel vissuto della classe.</div></div>
+                    <div class="acc-body"><div class="acc-body-inner">Prove orali, relazioni su esperienze di laboratorio con dati reali, analisi di campioni raccolti sul campo, osservazioni in azienda agricola, riflessioni su attività di alternanza. L'IA non conosce il tuo contesto specifico: radica le attività nel vissuto della classe.</div></div>
                 </div>
                 <div class="acc-item">
-                    <button class="acc-trigger" aria-expanded="false" aria-controls="panel-doc-2">Compiti con uso esplicito e dichiarato dell'IA
-                        <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                    <button class="acc-trigger">Compiti con uso esplicito e dichiarato dell'IA
+                        <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
                     </button>
-                    <div id="panel-doc-2" class="acc-body"><div class="acc-body-inner">Assegnare compiti in cui lo studente usa l'IA come strumento dichiarato, allegando il transcript della conversazione. Si valuta la qualità del prompting, la capacità critica di selezione e rielaborazione, e la comprensione finale dimostrata.</div></div>
+                    <div class="acc-body"><div class="acc-body-inner">Assegnare compiti in cui lo studente usa l'IA come strumento dichiarato, allegando il transcript della conversazione. Si valuta la qualità del prompting, la capacità critica di selezione e rielaborazione, e la comprensione finale dimostrata.</div></div>
                 </div>
                 <div class="acc-item">
-                    <button class="acc-trigger" aria-expanded="false" aria-controls="panel-doc-3">Come citare l'IA nei lavori scolastici
-                        <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                    <button class="acc-trigger">Come citare l'IA nei lavori scolastici
+                        <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
                     </button>
-                    <div id="panel-doc-3" class="acc-body"><div class="acc-body-inner">Stabilire con la classe una convenzione condivisa, es.: <em>"Elaborato sviluppato con il supporto di [nome tool], [data]. Output revisionato e rielaborato dall'autore."</em> La dichiarazione è obbligatoria; l'uso non dichiarato equivale a plagio.</div></div>
+                    <div class="acc-body"><div class="acc-body-inner">Stabilire con la classe una convenzione condivisa, es.: <em>"Elaborato sviluppato con il supporto di [nome tool], [data]. Output revisionato e rielaborato dall'autore."</em> La dichiarazione è obbligatoria; l'uso non dichiarato equivale a plagio.</div></div>
                 </div>
                 <div class="acc-item">
-                    <button class="acc-trigger" aria-expanded="false" aria-controls="panel-doc-4">Valutare il processo, non solo il prodotto — la "difesa orale"
-                        <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                    <button class="acc-trigger">Valutare il processo, non solo il prodotto — la "difesa orale"
+                        <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
                     </button>
-                    <div id="panel-doc-4" class="acc-body"><div class="acc-body-inner">Quando uno studente consegna un progetto elaborato con l'IA — ad esempio un piano di difesa integrata per il vigneto dell'azienda agraria scolastica — la valutazione non si ferma al documento stampato. La vera misura della competenza è la <strong>difesa orale pubblica</strong>: il docente interroga sulle motivazioni biochimiche delle scelte, simula imprevisti climatici, valuta la capacità di rimodulare il piano in tempo reale. Questo approccio — dal prodotto al processo — non può essere aggirato da alcun algoritmo. Lo stesso vale per il <em>Quaderno di Campagna</em>: le osservazioni registrate in campo sono dati autentici che l'IA non può produrre al posto dello studente.</div></div>
+                    <div class="acc-body"><div class="acc-body-inner">Quando uno studente consegna un progetto elaborato con l'IA — ad esempio un piano di difesa integrata per il vigneto dell'azienda agraria scolastica — la valutazione non si ferma al documento stampato. La vera misura della competenza è la <strong>difesa orale pubblica</strong>: il docente interroga sulle motivazioni biochimiche delle scelte, simula imprevisti climatici, valuta la capacità di rimodulare il piano in tempo reale. Questo approccio — dal prodotto al processo — non può essere aggirato da alcun algoritmo. Lo stesso vale per il <em>Quaderno di Campagna</em>: le osservazioni registrate in campo sono dati autentici che l'IA non può produrre al posto dello studente.</div></div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ── STUDENTI ── -->
-    <section id="tab-studenti" class="section" role="tabpanel">
+    <section id="tab-studenti" class="section">
         <h2 class="section-title">Guida per gli Studenti</h2>
         <span class="green-line"></span>
         <p class="section-lead">L'IA è uno strumento potente. Usarla bene significa capire quando ti aiuta davvero a imparare e quando ti impedisce di farlo.</p>
@@ -952,7 +916,7 @@
 
         <div class="card">
             <div class="card-title">
-                <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+                <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
                 Come usare l'IA per studiare meglio
             </div>
             <div class="do-dont">
@@ -984,7 +948,7 @@
 
         <div class="card">
             <div class="card-title">
-                <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
                 Come si cita l'IA in un lavoro scolastico
             </div>
             <div class="box-green">
@@ -996,7 +960,7 @@
 
         <div class="card">
             <div class="card-title">
-                <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
                 Sicurezza e privacy: cosa non fare mai
             </div>
             <ul class="rule-list">
@@ -1010,46 +974,44 @@
 
         <div class="card">
             <div class="card-title">
-                <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+                <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
                 5 domande da farti prima di consegnare un lavoro con l'IA
             </div>
             <div class="accordion">
                 <div class="acc-item">
-                    <button class="acc-trigger" aria-expanded="false" aria-controls="panel-stu-1">1. Il docente ha autorizzato l'uso dell'IA per questo compito?
-                        <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                    <button class="acc-trigger">1. Il docente ha autorizzato l'uso dell'IA per questo compito?
+                        <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
                     </button>
-                    <div id="panel-stu-1" class="acc-body"><div class="acc-body-inner">Se non lo sai, chiedi. Non dare mai per scontato. La regola varia da materia a materia e da compito a compito.</div></div>
+                    <div class="acc-body"><div class="acc-body-inner">Se non lo sai, chiedi. Non dare mai per scontato. La regola varia da materia a materia e da compito a compito.</div></div>
                 </div>
                 <div class="acc-item">
-                    <button class="acc-trigger" aria-expanded="false" aria-controls="panel-stu-2">2. Sto davvero capendo quello che sto usando?
-                        <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                    <button class="acc-trigger">2. Sto davvero capendo quello che sto usando?
+                        <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
                     </button>
-                    <div id="panel-stu-2" class="acc-body"><div class="acc-body-inner">Se non riesci a spiegare con parole tue quello che l'IA ha prodotto, non puoi usarlo. L'obiettivo è che tu impari: se usi l'IA senza capire, salti il passaggio più importante.</div></div>
+                    <div class="acc-body"><div class="acc-body-inner">Se non riesci a spiegare con parole tue quello che l'IA ha prodotto, non puoi usarlo. L'obiettivo è che tu impari: se usi l'IA senza capire, salti il passaggio più importante.</div></div>
                 </div>
                 <div class="acc-item">
-                    <button class="acc-trigger" aria-expanded="false" aria-controls="panel-stu-3">3. Ho verificato le informazioni su fonti attendibili?
-                        <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                    <button class="acc-trigger">3. Ho verificato le informazioni su fonti attendibili?
+                        <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
                     </button>
-                    <div id="panel-stu-3" class="acc-body"><div class="acc-body-inner">L'IA inventa dati, date, fonti e citazioni. Prima di includere un'informazione, cercala su almeno una fonte attendibile: libro di testo, enciclopedia, sito istituzionale.</div></div>
+                    <div class="acc-body"><div class="acc-body-inner">L'IA inventa dati, date, fonti e citazioni. Prima di includere un'informazione, cercala su almeno una fonte attendibile: libro di testo, enciclopedia, sito istituzionale.</div></div>
                 </div>
                 <div class="acc-item">
-                    <button class="acc-trigger" aria-expanded="false" aria-controls="panel-stu-4">4. Ho riscritto tutto con parole mie?
-                        <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                    <button class="acc-trigger">4. Ho riscritto tutto con parole mie?
+                        <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
                     </button>
-                    <div id="panel-stu-4" class="acc-body"><div class="acc-body-inner">Copiare il testo dell'IA senza modificarlo equivale a plagio. Riscrivi tutto, aggiungi la tua prospettiva, inserisci esempi dal contesto della tua esperienza. Questo trasforma l'output in un lavoro tuo.</div></div>
+                    <div class="acc-body"><div class="acc-body-inner">Copiare il testo dell'IA senza modificarlo equivale a plagio. Riscrivi tutto, aggiungi la tua prospettiva, inserisci esempi dal contesto della tua esperienza. Questo trasforma l'output in un lavoro tuo.</div></div>
                 </div>
                 <div class="acc-item">
-                    <button class="acc-trigger" aria-expanded="false" aria-controls="panel-stu-5">5. Ho dichiarato l'uso dell'IA nel lavoro?
-                        <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                    <button class="acc-trigger">5. Ho dichiarato l'uso dell'IA nel lavoro?
+                        <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
                     </button>
-                    <div id="panel-stu-5" class="acc-body"><div class="acc-body-inner">Se hai usato l'IA, anche solo per una bozza o per la correzione grammaticale, indicalo nel lavoro. La dichiarazione non abbassa il voto: dimostra maturità e onestà intellettuale.</div></div>
+                    <div class="acc-body"><div class="acc-body-inner">Se hai usato l'IA, anche solo per una bozza o per la correzione grammaticale, indicalo nel lavoro. La dichiarazione non abbassa il voto: dimostra maturità e onestà intellettuale.</div></div>
                 </div>
             </div>
-        </div>
-        
         <div class="card">
             <div class="card-title">
-                <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5" aria-hidden="true"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg></div>
+                <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg></div>
                 Prompt engineering: la nuova metacompetenza
             </div>
             <p style="font-size:0.9rem;color:var(--text-muted);margin-bottom:14px;">Saper <em>parlare bene con l'IA</em> è già una competenza professionale richiesta dal mercato del lavoro. Il DigComp 3.0 la riconosce esplicitamente come metacompetenza digitale.</p>
@@ -1067,7 +1029,7 @@
 
         <div class="card">
             <div class="card-title">
-                <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+                <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
                 Disinformazione, deepfake e camere d'eco
             </div>
             <p style="font-size:0.9rem;color:var(--text-muted);margin-bottom:14px;">Il DigComp 3.0 e le Linee Guida per l'Educazione Civica chiedono agli studenti di sviluppare difese cognitive contro la disinformazione sintetica generata dall'IA.</p>
@@ -1096,9 +1058,56 @@
             </div>
         </div>
     </section>
+    <section id="tab-agri" class="section">
+        <h2 class="section-title">IA e Istituto Agrario</h2>
+        <span class="green-line"></span>
+        <p class="section-lead">L'intelligenza artificiale sta trasformando il settore agroalimentare. Come istituto agrario, abbiamo l'opportunità di formare i tecnici del futuro.</p>
 
-    <!-- ── AGRI (Ripristinata completa) ── -->
-    <section id="tab-agri" class="section" role="tabpanel">
+        <div class="box-green">
+            <div class="box-title">Perché l'IA è rilevante per il nostro indirizzo</div>
+            Precision farming, monitoraggio colture da satellite, modelli predittivi per parassiti e fitopatie, ottimizzazione irrigazione, sistemi HACCP assistiti, tracciabilità di filiera: l'agri-tech è già una realtà nei mercati del lavoro che i nostri studenti affronteranno.
+        </div>
+
+        <div class="card">
+            <div class="card-title">
+                <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/></svg></div>
+                Applicazioni IA per materia
+            </div>
+            <div class="agri-grid">
+                <div class="agri-card"><div class="agri-subject">Produzioni vegetali</div><div class="agri-title">Modelli predittivi fitosanitari</div><p>IA per prevedere attacchi di parassiti, ottimizzare i trattamenti e ridurre l'uso di fitofarmaci</p></div>
+                <div class="agri-card"><div class="agri-subject">Zootecnia</div><div class="agri-title">Monitoraggio benessere animale</div><p>Sensori e IA per rilevare comportamenti anomali negli allevamenti e ottimizzare alimentazione</p></div>
+                <div class="agri-card"><div class="agri-subject">Agroalimentare</div><div class="agri-title">Controllo qualità automatizzato</div><p>Computer vision per classificazione prodotti, sistemi HACCP assistiti, tracciabilità blockchain</p></div>
+                <div class="agri-card"><div class="agri-subject">Gestione aziendale</div><div class="agri-title">Business planning e PLV</div><p>IA per elaborare scenari economici, simulare piani colturali, calcolare redditività</p></div>
+                <div class="agri-card"><div class="agri-subject">Topografia / GIS</div><div class="agri-title">Analisi territorio da satellite</div><p>Immagini satellitari elaborate con IA per mappatura colture, stima rese, analisi NDVI</p></div>
+                <div class="agri-card"><div class="agri-subject">Inglese CLIL</div><div class="agri-title">Glossari tecnici bilingue</div><p>IA per materiali CLIL specifici per l'agronomia e dialoghi professionali in inglese</p></div>
+                <div class="agri-card"><div class="agri-subject">Chimica / Biologia</div><div class="agri-title">Visualizzazione processi</div><p>IA generativa per simulazioni di cicli biogeochimici, metabolismi, reazioni di laboratorio</p></div>
+                <div class="agri-card"><div class="agri-subject">PCTO / Stage</div><div class="agri-title">Relazioni tecniche guidate</div><p>L'IA come supporto per strutturare relazioni di stage, da rielaborare autonomamente</p></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">
+                <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 010 20"/></svg></div>
+                Strumenti specifici per il settore agroalimentare
+            </div>
+            <div class="tool-chips">
+                <span class="chip highlight">PlantNet (identificazione piante)</span>
+                <span class="chip highlight">Google Earth Engine</span>
+                <span class="chip highlight">Sentinel Hub (analisi satellitare)</span>
+                <span class="chip highlight">Copernicus Land Service</span>
+                <span class="chip">QGIS + plugin ML</span>
+                <span class="chip">ChatGPT + Code Interpreter</span>
+                <span class="chip">Agri-food AI tools (EU)</span>
+            </div>
+            <div class="box-green" style="margin-top:16px;">
+                <div class="box-title">Opportunità per i nostri studenti</div>
+                La conoscenza degli strumenti IA applicati all'agricoltura è sempre più richiesta nelle aziende del settore primario e nelle cooperative agricole. Queste competenze aumentano concretamente l'occupabilità al termine del percorso di studi.
+            </div>
+        </div>
+    </section>
+
+    <!-- ── AGRI ── -->
+    <section id="tab-agri" class="section">
         <h2 class="section-title">IA e Istituto Agrario</h2>
         <span class="green-line"></span>
         <p class="section-lead">Per il Mendel l'IA non è solo uno strumento didattico trasversale: è la materia stessa del futuro sviluppo professionale dei nostri studenti, in un settore che cambia più velocemente di qualsiasi altro.</p>
@@ -1110,37 +1119,26 @@
 
         <div class="card">
             <div class="card-title">
-                <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5" aria-hidden="true"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/></svg></div>
+                <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/></svg></div>
                 Applicazioni IA per indirizzo e materia
             </div>
             <div class="agri-grid">
-                <div class="agri-card"><div class="agri-subject">Biologia</div><div class="agri-title">Genomica e Riconoscimento</div><p>Riconoscimento automatico di pattern cellulari al microscopio e strumenti di bioinformatica base per simulazioni di genetica mendeliana.</p></div>
-                <div class="agri-card"><div class="agri-subject">Chimica</div><div class="agri-title">Analisi Spettrometrica</div><p>Simulazione di complessi cicli biogeochimici e analisi di campioni di terreno/acqua assistita da modelli predittivi di machine learning.</p></div>
-                <div class="agri-card"><div class="agri-subject">TTRG</div><div class="agri-title">Progettazione Generativa</div><p>Generazione di modelli 3D e rendering assistiti dall'IA per la progettazione tecnica di serre, impianti irrigui e sistemazione di aree verdi.</p></div>
-                <div class="agri-card"><div class="agri-subject">TPVZ</div><div class="agri-title">Precision Farming</div><p>Ottimizzazione automatizzata dei cicli di nutrizione vegetale e formulazione bilanciata delle razioni zootecniche in base all'obiettivo di resa.</p></div>
-                <div class="agri-card"><div class="agri-subject">ASB</div><div class="agri-title">Modellizzazione Ambientale</div><p>Modelli predittivi per il bilancio idrico, l'evapotraspirazione e l'uso di app neurali per la classificazione tassonomica della biodiversità.</p></div>
-                <div class="agri-card"><div class="agri-subject">Economia Agraria</div><div class="agri-title">Business Intelligence</div><p>Analisi predittiva dei mercati globali, stima delle fluttuazioni dei prezzi e ottimizzazione dinamica dei costi di produzione aziendale.</p></div>
-                <div class="agri-card"><div class="agri-subject">Estimo</div><div class="agri-title">Stima Danni da Drone/Satellite</div><p>Valutazione automatizzata dei danni da calamità naturali (grandine, siccità) e stima del valore fondiario incrociando Big Data territoriali.</p></div>
-                <div class="agri-card"><div class="agri-subject">FRST (Scienze Forestali)</div><div class="agri-title">Monitoraggio Boschivo</div><p>Stima della biomassa forestale, monitoraggio dell'accrescimento annuo e classificazione delle specie legnose tramite immagini satellitari elaborate dall'IA.</p></div>
-                <div class="agri-card"><div class="agri-subject">ATEF</div><div class="agri-title">Prevenzione Rischi</div><p>Mappatura algoritmica del rischio incendi e del dissesto idrogeologico con modelli IA predittivi per pianificare opere di difesa del suolo.</p></div>
-                <div class="agri-card"><div class="agri-subject">GAT — Agronomia ed Ecologia</div><div class="agri-title">Computer vision fitosanitaria</div><p>Riconoscimento precoce delle patologie fogliari; analisi NDVI da droni per mappare il vigore della coltura metro per metro.</p></div>
-                <div class="agri-card"><div class="agri-subject">GAT — Gestione Territorio</div><div class="agri-title">Droni e path planning</div><p>Pianificazione autonoma (path planning) per missioni di droni agricoli in aree complesse e rilievi topografici di precisione.</p></div>
-                <div class="agri-card"><div class="agri-subject">PT — Produzioni e Trasf.</div><div class="agri-title">Controllo qualità ottico</div><p>Sensori ottici per classificazione automatica nella filiera vitivinicola, casearia e ortofrutticola; sistemi HACCP assistiti da IA.</p></div>
-                <div class="agri-card"><div class="agri-subject">PT — Zootecnia</div><div class="agri-title">Benessere Animale 4.0</div><p>Analisi video e sonora con machine learning per il rilevamento precoce di stress, patologie e anomalie comportamentali nei capi.</p></div>
-                <div class="agri-card"><div class="agri-subject">Professionale — Valorizzazione</div><div class="agri-title">Marketing e filiera km0</div><p>Campagne di marketing territoriale per prodotti a chilometro zero generate con IA e analisi predittiva delle preferenze dei consumatori locali.</p></div>
-                <div class="agri-card"><div class="agri-subject">Topografia / GIS</div><div class="agri-title">Satellite e sensori IoT</div><p>Immagini multispettrali Copernicus con IA; reti di sensori IoT agro-meteorologici per prescrizioni di irrigazione a rateo variabile.</p></div>
-                <div class="agri-card"><div class="agri-subject">Inglese CLIL</div><div class="agri-title">Glossari tecnici bilingue</div><p>Materiali CLIL contestualizzati per l'agronomia; simulazione di dialoghi professionali in inglese con clienti e fornitori internazionali.</p></div>
-                <div class="agri-card"><div class="agri-subject">Matematica</div><div class="agri-title">Modelli e Big Data</div><p>Elaborazione statistica avanzata di dati agricoli e utilizzo di algoritmi predittivi per l'analisi di serie storiche e andamenti climatici.</p></div>
-                <div class="agri-card"><div class="agri-subject">Italiano</div><div class="agri-title">Scrittura Tecnica</div><p>Supporto nella stesura di relazioni tecniche, sintesi critica di testi complessi e revisione di articoli per la divulgazione scientifica.</p></div>
-                <div class="agri-card"><div class="agri-subject">Storia</div><div class="agri-title">Evoluzione del Paesaggio</div><p>Analisi testuale di archivi storici e mappe d'epoca assistita dall'IA per studiare l'evoluzione dell'agricoltura e del territorio rurale.</p></div>
-                <div class="agri-card"><div class="agri-subject">IDA — Corsi Serali</div><div class="agri-title">Riqualificazione professionale</div><p>L'IA come strumento di aggiornamento rapido per lavoratori del settore: normative PAC, piani aziendali, gestione documentale.</p></div>
-                <div class="agri-card"><div class="agri-subject">PCTO / Stage</div><div class="agri-title">Quaderno di Campagna + IA</div><p>L'IA supporta la struttura della relazione di stage; le osservazioni sul campo restano dati autentici e insostituibili dell'esperienza.</p></div>
+                <div class="agri-card"><div class="agri-subject">GAT — Agronomia ed Ecologia</div><div class="agri-title">Computer vision fitosanitaria</div><p>Riconoscimento precoce delle patologie fogliari; analisi NDVI da droni per mappare il vigore della coltura metro per metro</p></div>
+                <div class="agri-card"><div class="agri-subject">GAT — Gestione Territorio</div><div class="agri-title">Droni e dissesto idrogeologico</div><p>Path planning algoritmico per missioni di droni agricoli; modellizzazione predittiva del rischio idrogeologico e dell'erosione del suolo</p></div>
+                <div class="agri-card"><div class="agri-subject">PT — Produzioni e Trasformazioni</div><div class="agri-title">Controllo qualità ottico</div><p>Sensori ottici per classificazione automatica nella filiera vitivinicola, casearia e ortofrutticola; sistemi HACCP assistiti da IA</p></div>
+                <div class="agri-card"><div class="agri-subject">PT — Zootecnia</div><div class="agri-title">Monitoraggio benessere animale</div><p>Analisi video e sonora con machine learning per il rilevamento precoce di stress, patologie e anomalie comportamentali nei capi</p></div>
+                <div class="agri-card"><div class="agri-subject">Professionale — Valorizzazione</div><div class="agri-title">Marketing e filiera km0</div><p>Analisi predittiva dei mercati agricoli; campagne di marketing territoriale per prodotti a chilometro zero generate con IA</p></div>
+                <div class="agri-card"><div class="agri-subject">Economia ed Estimo</div><div class="agri-title">Business planning agrario</div><p>Simulazione di piani colturali pluriennali, calcolo PLV e redditività, stima del valore fondiario con modelli predittivi</p></div>
+                <div class="agri-card"><div class="agri-subject">Topografia / GIS</div><div class="agri-title">Satellite e sensori IoT</div><p>Immagini multispettrali Sentinel/Copernicus con IA; reti di sensori IoT agro-meteorologici per irrigazione a rateo variabile</p></div>
+                <div class="agri-card"><div class="agri-subject">IDA — Corsi Serali</div><div class="agri-title">Riqualificazione professionale</div><p>L'IA come strumento di aggiornamento rapido per lavoratori del settore: normative, piani aziendali, gestione documentale HACCP</p></div>
+                <div class="agri-card"><div class="agri-subject">Inglese CLIL</div><div class="agri-title">Glossari tecnici bilingue</div><p>Materiali CLIL contestualizzati per l'agronomia; simulazione di dialoghi professionali in inglese con clienti e fornitori internazionali</p></div>
+                <div class="agri-card"><div class="agri-subject">PCTO / Stage</div><div class="agri-title">Quaderno di Campagna + IA</div><p>L'IA supporta la struttura della relazione di stage; le osservazioni sul campo — campioni, misurazioni, rilievi — sono dati autentici non delegabili</p></div>
             </div>
         </div>
 
         <div class="card">
             <div class="card-title">
-                <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+                <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
                 Laboratori e infrastrutture del Mendel per l'IA
             </div>
             <ul class="rule-list">
@@ -1158,7 +1156,7 @@
 
         <div class="card">
             <div class="card-title">
-                <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 010 20"/></svg></div>
+                <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 010 20"/></svg></div>
                 Strumenti e reti internazionali
             </div>
             <div class="tool-chips">
@@ -1176,16 +1174,14 @@
             </div>
         </div>
     </section>
-
-    <!-- ── FAMIGLIE ── -->
-    <section id="tab-famiglie" class="section" role="tabpanel">
+    <section id="tab-famiglie" class="section">
         <h2 class="section-title">Informazioni per le Famiglie</h2>
         <span class="green-line"></span>
         <p class="section-lead">La scuola tiene informate le famiglie sull'uso dell'IA nelle attività didattiche. Questa sezione risponde alle domande più frequenti.</p>
 
         <div class="card">
             <div class="card-title">
-                <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div>
+                <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div>
                 Cosa fa la scuola
             </div>
             <ul class="rule-list">
@@ -1200,34 +1196,34 @@
         <div class="grid-2">
             <div class="card">
                 <div class="card-title">
-                    <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+                    <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
                     Domande frequenti
                 </div>
                 <div class="accordion">
                     <div class="acc-item">
-                        <button class="acc-trigger" style="font-size:0.86rem;" aria-expanded="false" aria-controls="panel-fam-1">Mio figlio può usare ChatGPT per i compiti?
-                            <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                        <button class="acc-trigger" style="font-size:0.86rem;">Mio figlio può usare ChatGPT per i compiti?
+                            <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
                         </button>
-                        <div id="panel-fam-1" class="acc-body"><div class="acc-body-inner">Dipende dal tipo di compito e dalle indicazioni del singolo docente. In generale, l'uso deve essere dichiarato e il lavoro rielaborato autonomamente. Incoraggiate vostro figlio a chiedere al docente se non è chiaro.</div></div>
+                        <div class="acc-body"><div class="acc-body-inner">Dipende dal tipo di compito e dalle indicazioni del singolo docente. In generale, l'uso deve essere dichiarato e il lavoro rielaborato autonomamente. Incoraggiate vostro figlio a chiedere al docente se non è chiaro.</div></div>
                     </div>
                     <div class="acc-item">
-                        <button class="acc-trigger" style="font-size:0.86rem;" aria-expanded="false" aria-controls="panel-fam-2">I dati di mio figlio vengono condivisi con l'IA?
-                            <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                        <button class="acc-trigger" style="font-size:0.86rem;">I dati di mio figlio vengono condivisi con l'IA?
+                            <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
                         </button>
-                        <div id="panel-fam-2" class="acc-body"><div class="acc-body-inner">No. La scuola vieta ai docenti di inserire dati identificativi degli studenti in qualsiasi strumento IA. I materiali didattici vengono prodotti in forma anonima o generica.</div></div>
+                        <div class="acc-body"><div class="acc-body-inner">No. La scuola vieta ai docenti di inserire dati identificativi degli studenti in qualsiasi strumento IA. I materiali didattici vengono prodotti in forma anonima o generica.</div></div>
                     </div>
                     <div class="acc-item">
-                        <button class="acc-trigger" style="font-size:0.86rem;" aria-expanded="false" aria-controls="panel-fam-3">Come posso capire se mio figlio usa l'IA correttamente?
-                            <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                        <button class="acc-trigger" style="font-size:0.86rem;">Come posso capire se mio figlio usa l'IA correttamente?
+                            <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
                         </button>
-                        <div id="panel-fam-3" class="acc-body"><div class="acc-body-inner">Chiedetegli di spiegarvi quello che ha scritto. Se non riesce a farlo con parole sue, potrebbe aver usato l'IA in modo non corretto. La capacità di spiegare è il segnale che ha davvero capito.</div></div>
+                        <div class="acc-body"><div class="acc-body-inner">Chiedetegli di spiegarvi quello che ha scritto. Se non riesce a farlo con parole sue, potrebbe aver usato l'IA in modo non corretto. La capacità di spiegare è il segnale che ha davvero capito.</div></div>
                     </div>
                 </div>
             </div>
 
             <div class="card">
                 <div class="card-title">
-                    <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+                    <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
                     Come supportare a casa
                 </div>
                 <ul class="rule-list">
@@ -1238,10 +1234,10 @@
                 </ul>
             </div>
         </div>
-        
+
         <div class="card">
             <div class="card-title">
-                <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+                <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
                 Patto di Corresponsabilità Educativa e IA
             </div>
             <p style="font-size:0.9rem;color:var(--text-muted);margin-bottom:14px;">In coerenza con il DM 166/2025, il Patto di Corresponsabilità Educativa del Mendel include una sezione specifica dedicata all'uso dell'IA. Con la firma, le famiglie si impegnano a:</p>
@@ -1259,7 +1255,7 @@
     </section>
 
     <!-- ── PRIVACY & INTEGRITÀ ── -->
-    <section id="tab-privacy" class="section" role="tabpanel">
+    <section id="tab-privacy" class="section">
         <h2 class="section-title">Privacy e Integrità Accademica</h2>
         <span class="green-line"></span>
         <p class="section-lead">Due pilastri dell'uso responsabile dell'IA: proteggere i dati e mantenere l'onestà intellettuale in tutto il percorso scolastico.</p>
@@ -1267,7 +1263,7 @@
         <div class="grid-2">
             <div class="card">
                 <div class="card-title">
-                    <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                    <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
                     Protezione dati (GDPR)
                 </div>
                 <ul class="rule-list">
@@ -1280,7 +1276,7 @@
 
             <div class="card">
                 <div class="card-title">
-                    <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                    <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
                     Integrità accademica
                 </div>
                 <ul class="rule-list">
@@ -1294,7 +1290,7 @@
 
         <div class="card">
             <div class="card-title">
-                <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+                <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
                 Regolamento IA — IIS Mendel (sintesi)
             </div>
             <div class="box-green" style="margin-bottom:14px;">
@@ -1309,7 +1305,7 @@
 
         <div class="card">
             <div class="card-title">
-                <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5" aria-hidden="true"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div>
+                <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div>
                 Riferimenti normativi
             </div>
             <ul class="rule-list">
@@ -1324,8 +1320,8 @@
         </div>
     </section>
 
-    <!-- ── BIBLIOGRAFIA (Ripristinata completa) ── -->
-    <section id="tab-bibliografia" class="section" role="tabpanel">
+    <!-- ── BIBLIOGRAFIA ── -->
+    <section id="tab-bibliografia" class="section">
         <h2 class="section-title">Riferimenti Bibliografici</h2>
         <span class="green-line"></span>
         <p class="section-lead">Risorse per chi vuole approfondire i temi dell'intelligenza artificiale in educazione, nella didattica agricola e nella governance digitale. Tutti i testi segnalati sono di autori reali e verificabili.</p>
@@ -1334,7 +1330,7 @@
         <div class="card" style="border-color:#a5d6a7;">
             <div class="card-title">
                 <div class="card-icon" style="background:var(--green-500);">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                 </div>
                 <span style="color:var(--green-800);">Pubblicazioni recenti — 2023/2025</span>
                 <span style="margin-left:auto;font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--green-500);background:var(--green-100);padding:3px 10px;border-radius:20px;">Aggiornato</span>
@@ -1372,7 +1368,7 @@
         <!-- DOCUMENTI UFFICIALI -->
         <div class="card">
             <div class="card-title">
-                <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
                 Documenti ufficiali e normativi
             </div>
             <ul class="rule-list">
@@ -1400,7 +1396,7 @@
         <!-- LIBRI E MONOGRAFIE -->
         <div class="card">
             <div class="card-title">
-                <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div>
+                <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div>
                 Libri e monografie — IA in educazione
             </div>
             <ul class="rule-list">
@@ -1431,7 +1427,7 @@
         <!-- RAPPORTI E STUDI -->
         <div class="card">
             <div class="card-title">
-                <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
+                <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
                 Rapporti e studi internazionali
             </div>
             <ul class="rule-list">
@@ -1456,7 +1452,7 @@
         <!-- IA E AGRICOLTURA -->
         <div class="card">
             <div class="card-title">
-                <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5" aria-hidden="true"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/></svg></div>
+                <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/></svg></div>
                 IA e settore agroalimentare
             </div>
             <ul class="rule-list">
@@ -1478,7 +1474,7 @@
         <!-- RISORSE ONLINE -->
         <div class="card">
             <div class="card-title">
-                <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 010 20"/></svg></div>
+                <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 010 20"/></svg></div>
                 Risorse online e periodici di riferimento
             </div>
             <div class="grid-2">
@@ -1507,6 +1503,7 @@
                 Se non sei abituato alla letteratura accademica, il punto di partenza più accessibile è il documento MIM (in italiano, pratico e contestualizzato) e il rapporto UNESCO 2023 (disponibile gratuitamente in inglese con sintesi in italiano). Per l'ambito agrario, il report FAO 2022 offre un'ottima panoramica applicativa senza richiedere prerequisiti tecnici avanzati.
             </div>
         </div>
+
     </section>
 
 </main>
@@ -1515,84 +1512,42 @@
 <footer class="site-footer">
     <div class="footer-logo">IIS Gregorio Mendel</div>
     <p>Via Ferrazzi 15 &mdash; 20035 Villa Cortese (MI)</p>
-    <p style="margin-top:6px;"><a href="https://agrariomendel.edu.it" target="_blank" rel="noopener">agrariomendel.edu.it</a></p>
+    <p style="margin-top:6px;"><a href="https://agrariomendel.edu.it" target="_blank">agrariomendel.edu.it</a></p>
     <p style="margin-top:16px;">Pagina a cura del <strong style="color:rgba(255,255,255,0.85);">Team Digitale IIS Mendel</strong> &middot; A.S. 2025/26</p>
     <p>In conformità con le Linee Guida MIM per l'IA nelle scuole (2025)</p>
 </footer>
 
-<!-- Pulsante Torna Su -->
-<button id="backToTop" class="back-to-top" aria-label="Torna all'inizio della pagina">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg>
-</button>
-
 <script>
-    // Gestione dei Tab
     function switchTab(id) {
-        document.querySelectorAll('.tab-btn').forEach(b => {
-            b.classList.remove('active');
-            b.setAttribute('aria-selected', 'false');
-        });
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
         document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-        
         const btn = document.querySelector('[data-tab="' + id + '"]');
         const sec = document.getElementById('tab-' + id);
-        
-        if (btn) {
-            btn.classList.add('active');
-            btn.setAttribute('aria-selected', 'true');
-        }
-        if (sec) { 
-            sec.classList.add('active'); 
-            // Usa un piccolo offset per non far coprire il titolo dai tab sticky
-            const y = sec.getBoundingClientRect().top + window.scrollY - 80;
-            window.scrollTo({ top: y, behavior: 'smooth' }); 
-        }
+        if (btn) btn.classList.add('active');
+        if (sec) { sec.classList.add('active'); window.scrollTo({ top: 0, behavior: 'smooth' }); }
     }
 
     document.querySelectorAll('.tab-btn').forEach(btn => {
         btn.addEventListener('click', () => switchTab(btn.dataset.tab));
     });
 
-    // Gestione Accordion accessibile
     document.querySelectorAll('.acc-trigger').forEach(trigger => {
         trigger.addEventListener('click', () => {
             const item = trigger.closest('.acc-item');
+            const body = item.querySelector('.acc-body');
             const isOpen = item.classList.contains('open');
             const parent = trigger.closest('.accordion');
-            
-            // Chiudi gli altri nello stesso gruppo
             if (parent) {
                 parent.querySelectorAll('.acc-item.open').forEach(open => {
                     open.classList.remove('open');
-                    open.querySelector('.acc-trigger').setAttribute('aria-expanded', 'false');
-                    open.querySelector('.acc-body').style.maxHeight = null;
+                    open.querySelector('.acc-body').style.maxHeight = '0';
                 });
             }
-            
-            // Apri/chiudi corrente
             if (!isOpen) {
                 item.classList.add('open');
-                trigger.setAttribute('aria-expanded', 'true');
-                const body = item.querySelector('.acc-body');
                 body.style.maxHeight = body.scrollHeight + 'px';
-            } else {
-                trigger.setAttribute('aria-expanded', 'false');
             }
         });
-    });
-
-    // Gestione pulsante "Torna su"
-    const backToTopBtn = document.getElementById("backToTop");
-    window.addEventListener("scroll", () => {
-        if (window.scrollY > 300) {
-            backToTopBtn.classList.add("visible");
-        } else {
-            backToTopBtn.classList.remove("visible");
-        }
-    });
-
-    backToTopBtn.addEventListener("click", () => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
     });
 </script>
 </body>
